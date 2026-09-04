@@ -1,11 +1,18 @@
-import logo from "@/assets/logo-mark.png.asset.json";
-import displayCabinet from "@/assets/display-cabinet.jpg.asset.json";
-import wineCabinet from "@/assets/wine-cabinet.jpg.asset.json";
-import diningBlue from "@/assets/dining-blue.jpg.asset.json";
-import loungeMono from "@/assets/lounge-mono.jpg.asset.json";
-import tour1 from "@/assets/tour-1.mp4.asset.json";
-import tour2 from "@/assets/tour-2.mp4.asset.json";
-import tour3 from "@/assets/tour-3.mp4.asset.json";
+// All site media lives in the public "site-media" storage bucket so it is
+// visible on any external deployment. Add new files there and list them here.
+const MEDIA_BASE =
+  "https://jknvxqspdkxlvdsjocxk.supabase.co/storage/v1/object/public/site-media";
+
+export const mediaUrl = (file: string) => `${MEDIA_BASE}/${file}`;
+
+const logo = { url: mediaUrl("logo-mark.png") };
+const displayCabinet = { url: mediaUrl("display-cabinet.jpg") };
+const wineCabinet = { url: mediaUrl("wine-cabinet.jpg") };
+const diningBlue = { url: mediaUrl("dining-blue.jpg") };
+const loungeMono = { url: mediaUrl("lounge-mono.jpg") };
+const tour1 = { url: mediaUrl("tour-1.mp4") };
+const tour2 = { url: mediaUrl("tour-2.mp4") };
+const tour3 = { url: mediaUrl("tour-3.mp4") };
 
 export const site = {
   name: "Flipaholics SA",
