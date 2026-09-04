@@ -57,7 +57,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoUrl} alt="Flipaholics SA logo" className="h-11 w-auto mix-blend-multiply" />
+            <img src={logoUrl} alt="Flipaholics SA logo" className="h-12 w-auto" />
             <span className="sr-only">{site.name}</span>
           </a>
           <nav className="hidden items-center gap-8 md:flex">
@@ -91,7 +91,7 @@ function Index() {
           preload="auto"
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-foreground/80 via-foreground/60 to-foreground/90" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-foreground/70 via-foreground/45 to-foreground/85" />
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-28 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.45em] text-background/70">
             {site.category} · Centurion, Gauteng
