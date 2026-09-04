@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.jpg.asset.json";
+import logo from "@/assets/logo-mark.png.asset.json";
 import displayCabinet from "@/assets/display-cabinet.jpg.asset.json";
 import wineCabinet from "@/assets/wine-cabinet.jpg.asset.json";
 import diningBlue from "@/assets/dining-blue.jpg.asset.json";
