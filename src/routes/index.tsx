@@ -121,7 +121,7 @@ function Index() {
       </section>
 
       {/* About */}
-      <section id="about" className="mx-auto max-w-6xl px-5 py-24">
+      <section id="about" className="scroll-mt-24 mx-auto max-w-6xl px-5 py-24">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
             <p className="script gold-text text-5xl">The studio</p>
@@ -166,7 +166,7 @@ function Index() {
       </section>
 
       {/* Work */}
-      <section id="work" className="bg-foreground py-24 text-background">
+      <section id="work" className="scroll-mt-20 bg-foreground py-24 text-background">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal className="mb-12 text-center">
             <p className="script text-5xl text-accent">Our work</p>
@@ -182,7 +182,7 @@ function Index() {
       </section>
 
       {/* Booking */}
-      <section id="book" className="mx-auto max-w-4xl px-5 py-24">
+      <section id="book" className="scroll-mt-24 mx-auto max-w-4xl px-5 py-24">
         <Reveal className="mb-10 text-center">
           <p className="script gold-text text-5xl">Let's begin</p>
           <h2 className="mt-2 text-4xl font-medium">
@@ -199,7 +199,7 @@ function Index() {
       </section>
 
       {/* Contact / footer */}
-      <footer id="contact" className="bg-foreground text-background">
+      <footer id="contact" className="scroll-mt-20 bg-foreground text-background">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-3">
           <div>
             <div className="inline-block bg-background p-4">
