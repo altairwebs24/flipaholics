@@ -49,7 +49,7 @@ export function Gallery() {
           <Reveal
             key={item.src}
             delay={i * 70}
-            className={item.wide ? "sm:col-span-2" : undefined}
+            className={item.wide ? "sm:col-span-2" : ""}
           >
             <button
               type="button"
