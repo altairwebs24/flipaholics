@@ -10,8 +10,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "deploy": "bun run build && wrangler deploy",
-    "deploy:preview": "bun run build && wrangler dev"
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:preview": "npm run build && wrangler dev",
+    "cf:deploy": "wrangler deploy"
   },
   "overrides": {
     "rolldown": "1.2.1"
