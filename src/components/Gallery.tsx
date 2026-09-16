@@ -72,7 +72,7 @@ export function Gallery() {
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {gallery.map((item, i) => (
+        {items.map((item, i) => (
           <Reveal
             key={item.src}
             delay={i * 70}
