@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
@@ -389,8 +389,3 @@ function EnquiriesPanel() {
     </div>
   );
 }
-
-export default AdminPage;
-
-// keep effect import used for future extension
-export const __unused = useEffect;
