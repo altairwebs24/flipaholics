@@ -1,6 +1,32 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { gallery, type GalleryItem } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
+import { supabase } from "@/integrations/supabase/client";
+
+function useProjectItems(): GalleryItem[] {
+  const { data } = useQuery({
+    queryKey: ["published-projects"],
+    queryFn: async () => {
+      const { data: rows, error } = await supabase
+        .from("projects")
+        .select("title, caption, media_url, media_type, wide, published, sort_order, created_at")
+        .eq("published", true)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return rows;
+    },
+  });
+
+  return (data ?? []).map((p) => ({
+    type: p.media_type === "video" ? "video" : "image",
+    src: p.media_url,
+    title: p.title,
+    caption: p.caption ?? "",
+    wide: p.wide,
+  }));
+}
 
 function Media({ item, active }: { item: GalleryItem; active: boolean }) {
   if (item.type === "video") {
@@ -28,6 +54,7 @@ function Media({ item, active }: { item: GalleryItem; active: boolean }) {
 
 export function Gallery() {
   const [open, setOpen] = useState<GalleryItem | null>(null);
+  const items = [...useProjectItems(), ...gallery];
 
   useEffect(() => {
     if (!open) return;
