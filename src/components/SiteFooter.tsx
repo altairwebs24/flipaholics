@@ -59,7 +59,10 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-background/15 py-6 text-center text-[0.62rem] uppercase tracking-[0.28em] text-background/45">
-        © {new Date().getFullYear()} {site.name}
+        © {new Date().getFullYear()} {site.name} ·{" "}
+        <Link to="/auth" className="link-gold">
+          Admin
+        </Link>
       </div>
     </footer>
   );
