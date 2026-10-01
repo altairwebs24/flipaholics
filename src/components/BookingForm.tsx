@@ -19,6 +19,7 @@ const labelClass =
 export function BookingForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
+  const [waLink, setWaLink] = useState<string>(site.whatsapp);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,7 +30,7 @@ export function BookingForm() {
       full_name: String(data.get("full_name") ?? "").trim(),
       email: String(data.get("email") ?? "").trim(),
       phone: String(data.get("phone") ?? "").trim(),
-      service: String(data.get("service") ?? "").trim(),
+      service: data.getAll("service").map(String).join(", "),
       preferred_date: String(data.get("preferred_date") ?? "") || null,
       area: String(data.get("area") ?? "").trim() || null,
       budget: String(data.get("budget") ?? "").trim() || null,
@@ -38,10 +39,12 @@ export function BookingForm() {
 
     if (!payload.full_name || !payload.email || !payload.phone || !payload.service) {
       setStatus("error");
-      setError("Please complete your name, email, phone and the service you need.");
+      setError("Please complete your name, email, phone and at least one service.");
       return;
     }
 
+    // Open the tab during the click so pop-up blockers allow it.
+    const waWindow = window.open("", "_blank");
     setStatus("sending");
     setError("");
     const { error: insertError } = await supabase
@@ -49,13 +52,30 @@ export function BookingForm() {
       .insert(payload);
 
     if (insertError) {
+      waWindow?.close();
       setStatus("error");
       setError("We couldn't send that. Please try again or reach us on WhatsApp.");
       return;
     }
 
+    const lines = [
+      "Hi Flipaholics SA, I'd like to book a consultation.",
+      `Name: ${payload.full_name}`,
+      `Phone: ${payload.phone}`,
+      `Email: ${payload.email}`,
+      `Services: ${payload.service}`,
+      payload.preferred_date ? `Preferred date: ${payload.preferred_date}` : "",
+      payload.area ? `Area: ${payload.area}` : "",
+      payload.budget ? `Budget: ${payload.budget}` : "",
+      payload.message ? `Details: ${payload.message}` : "",
+    ].filter(Boolean);
+    const waUrl = `${site.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
+    setWaLink(waUrl);
     form.reset();
     setStatus("done");
+    const win = waWindow ?? window.open(waUrl, "_blank");
+    if (waWindow) waWindow.location.href = waUrl;
+    if (!win) window.location.href = waUrl;
   }
 
   if (status === "done") {
@@ -69,7 +89,7 @@ export function BookingForm() {
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <a
-            href={site.whatsapp}
+            href={waLink}
             target="_blank"
             rel="noreferrer"
             className="bg-accent px-7 py-3 text-xs uppercase tracking-[0.25em] text-accent-foreground transition-opacity hover:opacity-85"
@@ -118,21 +138,20 @@ export function BookingForm() {
         </label>
         <input id="phone" name="phone" required className={fieldClass} placeholder="+27 ..." />
       </div>
-      <div>
-        <label className={labelClass} htmlFor="service">
-          Service *
-        </label>
-        <select id="service" name="service" required defaultValue="" className={fieldClass}>
-          <option value="" disabled>
-            Select a service
-          </option>
+      <fieldset className="sm:col-span-2">
+        <legend className={labelClass}>Services * (choose all that apply)</legend>
+        <div className="mt-3 grid gap-2 sm:grid-cols-3">
           {services.map((s) => (
-            <option key={s} value={s}>
+            <label
+              key={s}
+              className="flex cursor-pointer items-center gap-2 border border-input px-3 py-2 text-sm transition-colors has-[:checked]:border-accent has-[:checked]:bg-accent/10"
+            >
+              <input type="checkbox" name="service" value={s} className="accent-[var(--gold)]" />
               {s}
-            </option>
+            </label>
           ))}
-        </select>
-      </div>
+        </div>
+      </fieldset>
       <div>
         <label className={labelClass} htmlFor="preferred_date">
           Preferred date
