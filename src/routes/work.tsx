@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Gallery } from "@/components/Gallery";
 import { Reveal } from "@/components/Reveal";
+import { services } from "@/lib/site";
 
 const title = "Our Work | Flipaholics SA Renovation Gallery";
 const description =
@@ -15,10 +16,14 @@ export const Route = createFileRoute("/work")({
       { property: "og:description", content: description },
     ],
   }),
+  validateSearch: (search: Record<string, unknown>): { category?: string } => ({
+    category: typeof search.category === "string" ? search.category : undefined,
+  }),
   component: WorkPage,
 });
 
 function WorkPage() {
+  const { category } = Route.useSearch();
   return (
     <div className="bg-foreground text-background">
       <div className="mx-auto max-w-6xl px-5 py-20">
@@ -31,7 +36,26 @@ function WorkPage() {
             Tap any piece to view it full screen.
           </p>
         </Reveal>
-        <Gallery />
+        <div className="mb-10 flex flex-wrap justify-center gap-3">
+          <Link
+            to="/work"
+            search={{}}
+            className={`border px-4 py-2 text-[0.65rem] uppercase tracking-[0.2em] transition-colors ${!category ? "border-accent text-accent" : "border-background/30 hover:border-accent"}`}
+          >
+            All
+          </Link>
+          {services.map((s) => (
+            <Link
+              key={s}
+              to="/work"
+              search={{ category: s }}
+              className={`border px-4 py-2 text-[0.65rem] uppercase tracking-[0.2em] transition-colors ${category === s ? "border-accent text-accent" : "border-background/30 hover:border-accent"}`}
+            >
+              {s}
+            </Link>
+          ))}
+        </div>
+        <Gallery category={category} />
         <div className="mt-16 text-center">
           <Link
             to="/book"
