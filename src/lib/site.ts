@@ -5,7 +5,7 @@ const MEDIA_BASE =
 
 export const mediaUrl = (file: string) => `${MEDIA_BASE}/${file}`;
 
-const logo = { url: mediaUrl("logo-mark.png") };
+const logo = { url: mediaUrl("logo-transparent.png") };
 const displayCabinet = { url: mediaUrl("display-cabinet.jpg") };
 const wineCabinet = { url: mediaUrl("wine-cabinet.jpg") };
 const diningBlue = { url: mediaUrl("dining-blue.jpg") };
@@ -27,6 +27,8 @@ export const site = {
   email: "flipaholicssa@gmail.com",
   instagram: "https://instagram.com/flipaholicssa",
   instagramHandle: "@flipaholicssa",
+  tiktok: "https://www.tiktok.com/@flipaholics.sa?_r=1&_t=ZS-9ABb6Cyer5B",
+  tiktokHandle: "@flipaholics.sa",
 } as const;
 
 export const logoUrl = logo.url;
@@ -39,6 +41,7 @@ export type GalleryItem = {
   title: string;
   caption: string;
   wide?: boolean;
+  category?: string;
 };
 
 export const gallery: GalleryItem[] = [
@@ -47,6 +50,7 @@ export const gallery: GalleryItem[] = [
     src: tour2.url,
     title: "Walkthrough",
     caption: "A finished flip, room by room",
+    category: "Full home renovations",
     wide: true,
   },
   {
@@ -54,30 +58,35 @@ export const gallery: GalleryItem[] = [
     src: displayCabinet.url,
     title: "Illuminated display",
     caption: "Backlit glass cabinetry with bespoke shelving",
+    category: "Built-in cabinetry",
   },
   {
     type: "image",
     src: wineCabinet.url,
     title: "Wine cellar drawer",
     caption: "Solid oak racking with warm concealed lighting",
+    category: "Built-in cabinetry",
   },
   {
     type: "video",
     src: tour3.url,
     title: "Detail work",
     caption: "Finishes, joinery and lighting up close",
+    category: "Lighting & finishes",
   },
   {
     type: "image",
     src: diningBlue.url,
     title: "Dining & lounge",
     caption: "Layered ceiling coves and mood lighting",
+    category: "Lighting & finishes",
   },
   {
     type: "image",
     src: loungeMono.url,
     title: "Monochrome living",
     caption: "Wall panelling, statement art and glass",
+    category: "Full home renovations",
     wide: true,
   },
 ];

@@ -103,12 +103,11 @@ function Index() {
             <div className="gold-rule" />
             <ul className="flex flex-wrap gap-3">
               {services.map((s) => (
-                <li
-                  key={s}
-                  className="border border-border px-4 py-2 text-[0.68rem] uppercase tracking-[0.2em]"
-                >
+                <li key={s}>
+                <Link to="/work" search={{ category: s }} className="block transition-colors hover:border-accent hover:text-accent border border-border px-4 py-2 text-[0.68rem] uppercase tracking-[0.2em]">
                   {s}
-                </li>
+                </Link>
+              </li>
               ))}
             </ul>
             <Link
