@@ -43,7 +43,7 @@
   --color-ink-soft: var(--ink-soft);
   --color-paper: var(--paper);
   --font-display: "Playfair Display", Georgia, serif;
-  --font-script: "Italianno", "Great Vibes", cursive;
+  --font-script: "Dancing Script", "Great Vibes", cursive;
   --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -129,7 +129,8 @@
 
 @utility script {
   font-family: var(--font-script);
-  line-height: 1;
+  font-weight: 600;
+  line-height: 1.1;
 }
 
 @utility gold-rule {

@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAdminSession } from "@/hooks/useAdminSession";
+import { services } from "@/lib/site";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -166,6 +167,7 @@ function ProjectsPanel() {
       media_url: mediaUrl,
       media_type: mediaType,
       wide: data.get("wide") === "on",
+      category: String(data.get("category") ?? "") || null,
       published: true,
       sort_order: Number(data.get("sort_order") ?? 0) || 0,
     });
@@ -204,6 +206,19 @@ function ProjectsPanel() {
             Short caption
           </label>
           <input id="caption" name="caption" className={fieldClass} placeholder="Backlit glass cabinetry" />
+        </div>
+        <div>
+          <label className={labelClass} htmlFor="category">
+            Category
+          </label>
+          <select id="category" name="category" defaultValue="" className={fieldClass}>
+            <option value="">None</option>
+            {services.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label className={labelClass} htmlFor="description">

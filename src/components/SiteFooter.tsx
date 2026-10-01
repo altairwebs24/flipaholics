@@ -37,7 +37,15 @@ export function SiteFooter() {
             rel="noreferrer"
             className="link-gold inline-block text-background/85"
           >
-            {site.instagramHandle}
+            Instagram {site.instagramHandle}
+          </a>
+          <a
+            href={site.tiktok}
+            target="_blank"
+            rel="noreferrer"
+            className="link-gold block text-background/85"
+          >
+            TikTok {site.tiktokHandle}
           </a>
         </div>
         <div className="space-y-3 text-sm">

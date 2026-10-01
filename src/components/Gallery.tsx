@@ -10,7 +10,7 @@ function useProjectItems(): GalleryItem[] {
     queryFn: async () => {
       const { data: rows, error } = await supabase
         .from("projects")
-        .select("title, caption, media_url, media_type, wide, published, sort_order, created_at")
+        .select("title, caption, media_url, media_type, wide, category, published, sort_order, created_at")
         .eq("published", true)
         .order("sort_order", { ascending: true })
         .order("created_at", { ascending: false });
@@ -25,6 +25,7 @@ function useProjectItems(): GalleryItem[] {
     title: p.title,
     caption: p.caption ?? "",
     wide: p.wide,
+    category: p.category ?? undefined,
   }));
 }
 
@@ -52,9 +53,10 @@ function Media({ item, active }: { item: GalleryItem; active: boolean }) {
   );
 }
 
-export function Gallery() {
+export function Gallery({ category }: { category?: string } = {}) {
   const [open, setOpen] = useState<GalleryItem | null>(null);
-  const items = [...useProjectItems(), ...gallery];
+  const all = [...useProjectItems(), ...gallery];
+  const items = category ? all.filter((i) => i.category === category) : all;
 
   useEffect(() => {
     if (!open) return;
@@ -71,6 +73,11 @@ export function Gallery() {
 
   return (
     <>
+      {items.length === 0 ? (
+        <p className="py-16 text-center text-sm opacity-70">
+          No {category} projects yet — new work is on its way.
+        </p>
+      ) : null}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item, i) => (
           <Reveal

@@ -24,6 +24,7 @@ function ContactPage() {
     { label: "WhatsApp", value: "Chat with us", href: site.whatsapp },
     { label: "Email", value: site.email, href: `mailto:${site.email}` },
     { label: "Instagram", value: site.instagramHandle, href: site.instagram },
+    { label: "TikTok", value: site.tiktokHandle, href: site.tiktok },
   ];
 
   return (
