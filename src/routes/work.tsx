@@ -54,7 +54,7 @@ function WorkPage() {
             </Link>
           ))}
         </div>
-        <Gallery category={category} />
+        <Gallery {...(category ? { category } : {})} />
         <div className="mt-16 text-center">
           <Link
             to="/book"
