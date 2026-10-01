@@ -71,6 +71,7 @@ export type Database = {
       projects: {
         Row: {
           caption: string | null
+          category: string | null
           created_at: string
           description: string | null
           id: string
@@ -84,6 +85,7 @@ export type Database = {
         }
         Insert: {
           caption?: string | null
+          category?: string | null
           created_at?: string
           description?: string | null
           id?: string
@@ -97,6 +99,7 @@ export type Database = {
         }
         Update: {
           caption?: string | null
+          category?: string | null
           created_at?: string
           description?: string | null
           id?: string
