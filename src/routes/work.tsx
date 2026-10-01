@@ -16,9 +16,8 @@ export const Route = createFileRoute("/work")({
       { property: "og:description", content: description },
     ],
   }),
-  validateSearch: (search: Record<string, unknown>): { category?: string } => ({
-    category: typeof search.category === "string" ? search.category : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { category?: string } =>
+    typeof search["category"] === "string" ? { category: search["category"] } : {},
   component: WorkPage,
 });
 

@@ -41,7 +41,7 @@ export type GalleryItem = {
   title: string;
   caption: string;
   wide?: boolean;
-  category?: string;
+  category?: string | undefined;
 };
 
 export const gallery: GalleryItem[] = [
