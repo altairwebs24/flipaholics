@@ -90,7 +90,7 @@ function Index() {
       <section className="mx-auto max-w-6xl px-5 py-20">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <p className="script gold-text text-5xl">The studio</p>
+            <p className="font-display text-5xl font-bold text-gold-deep sm:text-6xl">The studio</p>
             <h2 className="mt-3 text-3xl font-medium leading-tight sm:text-4xl">
               Renovations with an <em className="italic">obsessive</em> eye for finish
             </h2>
