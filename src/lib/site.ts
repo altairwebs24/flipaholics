@@ -5,7 +5,7 @@ const MEDIA_BASE =
 
 export const mediaUrl = (file: string) => `${MEDIA_BASE}/${file}`;
 
-const logo = { url: mediaUrl("logo-transparent.png") };
+const logo = { url: mediaUrl("logo-transparent-clean.png") };
 const displayCabinet = { url: mediaUrl("display-cabinet.jpg") };
 const wineCabinet = { url: mediaUrl("wine-cabinet.jpg") };
 const diningBlue = { url: mediaUrl("dining-blue.jpg") };

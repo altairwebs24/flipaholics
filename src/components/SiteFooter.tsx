@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="bg-foreground text-background">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-3">
         <div>
-          <div className="inline-block bg-background p-4">
+          <div className="inline-block">
             <img src={logoUrl} alt="Flipaholics SA logo" className="h-14 w-auto" />
           </div>
           <p className="script mt-5 text-4xl text-accent">{site.tagline}</p>
