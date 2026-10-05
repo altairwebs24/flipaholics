@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { site, logoUrl } from "@/lib/site";
+import { site, logoLightUrl } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-3">
         <div>
           <div className="inline-block">
-            <img src={logoUrl} alt="Flipaholics SA logo" className="h-14 w-auto" />
+            <img src={logoLightUrl} alt="Flipaholics SA logo" className="h-24 w-auto" />
           </div>
           <p className="script mt-5 text-4xl text-accent">{site.tagline}</p>
           <nav className="mt-6 flex flex-wrap gap-4 text-[0.62rem] uppercase tracking-[0.28em] text-background/60">

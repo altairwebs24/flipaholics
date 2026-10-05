@@ -5,7 +5,9 @@ const MEDIA_BASE =
 
 export const mediaUrl = (file: string) => `${MEDIA_BASE}/${file}`;
 
-const logo = { url: mediaUrl("logo-icon-2.png") };
+// Full logo with words: dark lettering for light backgrounds, light lettering for the dark footer.
+const logo = { url: mediaUrl("logo-full-dark.png") };
+export const logoLightUrl = mediaUrl("logo-full-light.png");
 const displayCabinet = { url: mediaUrl("display-cabinet.jpg") };
 const wineCabinet = { url: mediaUrl("wine-cabinet.jpg") };
 const diningBlue = { url: mediaUrl("dining-blue.jpg") };
