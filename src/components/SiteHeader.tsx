@@ -16,7 +16,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={logoUrl} alt="Flipaholics SA logo" className="h-11 w-auto sm:h-12" />
+          <img src={logoUrl} alt="Flipaholics SA logo" className="h-16 w-auto sm:h-20" />
           <span className="sr-only">{site.name}</span>
         </Link>
 
