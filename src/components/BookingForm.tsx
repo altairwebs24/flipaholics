@@ -94,7 +94,7 @@ export function BookingForm() {
             rel="noreferrer"
             className="bg-accent px-7 py-3 text-xs uppercase tracking-[0.25em] text-accent-foreground transition-opacity hover:opacity-85"
           >
-            Continue on WhatsApp
+            Confirm booking
           </a>
           <button
             type="button"
